@@ -1,0 +1,694 @@
+* {
+  box-sizing: border-box;
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  background: linear-gradient(180deg, #ffedf1 0%, #ffdae4 45%, #ffc8d6 100%);
+  color: #4a2840; 
+}
+
+/* ---------------- HEADER ---------------- */
+
+header {
+  position: relative;            
+  z-index: 5;
+  padding: 0.75rem 2rem;
+  background: #ffc8d6;          
+  border-bottom: 1px solid #ffc8d6;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+header h1 {
+  margin: 0;
+  font-size: 1.6rem;
+  color: #7a3251;                
+}
+
+.logo {
+  height: 50px;
+  max-width: 200px;
+  object-fit: contain;
+}
+
+header p {
+  margin: 0.25rem 0 0;
+  font-size: 0.9rem;
+  color: #9b4f6a;
+}
+
+.header-right {
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+  position: relative;
+}
+
+/* Dropdown de idioma */
+.lang-dropdown {
+  position: relative;
+}
+
+.lang-toggle {
+  border: 1px solid #ffc8d6;
+  background: #ffedf1;
+  border-radius: 0.6rem;
+  padding: 0.5rem 0.8rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  transition: 0.15s;
+  font-size: 0.9rem;
+  color: #7a3251;
+}
+
+.lang-label {
+  font-weight: 500;
+}
+
+.lang-toggle img {
+  width: 24px;
+  height: 18px;
+  border-radius: 0.3rem;
+  object-fit: cover;
+}
+
+.lang-toggle:hover {
+  background: #ffdae4;
+}
+
+.lang-toggle.active {
+  background: #ffffff;
+  border-color: #ffb6c8;
+}
+
+.lang-menu {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background: #ffffff;
+  border: 1px solid #ffc8d6;
+  border-radius: 0.8rem;
+  margin-top: 0.5rem;
+  display: none;
+  flex-direction: column;
+  gap: 0;
+  box-shadow: 0 4px 12px rgba(255, 182, 200, 0.3);
+  z-index: 100;
+  min-width: 140px;
+}
+
+.lang-menu.active {
+  display: flex;
+}
+
+.lang-option {
+  padding: 0.6rem 1rem;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  color: #7a3251;
+  font-size: 0.9rem;
+  text-align: left;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  transition: 0.15s;
+  width: 100%;
+  border-left: 3px solid transparent;
+}
+
+.lang-option img {
+  width: 24px;
+  height: 18px;
+  border-radius: 0.25rem;
+  object-fit: cover;
+}
+
+.lang-option:hover {
+  background: #ffedf1;
+}
+
+.lang-option.active {
+  background: #ffdae4;
+  border-left-color: #ffb6c8;
+  font-weight: 600;
+}
+
+.lang-select-hidden {
+  display: none;
+}
+
+/* ---------------- MAIN LAYOUT ---------------- */
+
+main {
+  max-width: 1300px;
+  margin: 1.5rem auto 2.5rem;
+  padding: 0 1rem;
+  display: grid;
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.5fr) minmax(0, 1.2fr);
+  gap: 1.5rem;
+  min-height: 600px;
+}
+
+/* ---------------- CARD ---------------- */
+
+.card {
+  background: #ffffff;           
+  border-radius: 1.25rem;
+  border: 1px solid #ffc8d6;
+  padding: 2rem 2rem 2rem;
+  box-shadow: 0 10px 24px rgba(255, 182, 200, 0.5);
+  display: flex;
+  flex-direction: column;
+}
+
+.info-card {
+  align-self: stretch;
+}
+
+/* ---------------- PILL ---------------- */
+
+.pill {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.35rem 0.8rem;
+  border-radius: 999px;
+  background: #ffdae4;           
+  border: 1px solid #ffc8d6;
+  color: #7a3251;
+  font-size: 0.9rem;
+  margin-bottom: 0.6rem;
+}
+
+/* ---------------- TITULOS E TEXTOS ---------------- */
+
+h2 {
+  margin: 0 0 0.3rem;
+  font-size: 1.25rem;
+  color: #7a3251;
+}
+
+h3 {
+  margin: 0 0 0.3rem;
+  font-size: 1rem;
+  color: #7a3251;
+}
+
+.description {
+  margin: 0 0 0.75rem;
+  font-size: 0.92rem;
+  color: #8a4a63;
+}
+
+/* ---------------- FILE INPUT ---------------- */
+
+.file-input-label {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.4rem;
+  margin-top: 0.4rem;
+  padding: 0.9rem 1rem;
+  border-radius: 0.9rem;
+  border: 1px dashed #ffc8d6;
+  background: #ffedf1;           
+  cursor: pointer;
+}
+
+.file-input-label input[type="file"] {
+  display: none;
+}
+
+.file-name {
+  margin-top: 0.4rem;
+  font-size: 0.88rem;
+  color: #7a3251;
+}
+
+/* ---------------- GRAVAÇÃO DE VOZ ---------------- */
+
+.recording-section {
+  margin-top: 1.2rem;
+  padding: 1rem;
+  border-radius: 0.9rem;
+  background: #ffedf1;
+  border: 1px dashed #ffc8d6;
+}
+
+.recording-section h3 {
+  margin: 0 0 0.8rem;
+  font-size: 0.95rem;
+  color: #7a3251;
+}
+
+.recording-controls {
+  display: flex;
+  gap: 0.6rem;
+  flex-wrap: wrap;
+}
+
+.record-btn,
+.stop-btn,
+.clear-btn {
+  padding: 0.5rem 1rem;
+  border-radius: 999px;
+  border: 1px solid #ffc8d6;
+  background: #ffffff;
+  color: #7a3251;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: 0.2s;
+}
+
+.record-btn:hover:not(:disabled) {
+  background: #ffb6c8;
+  border-color: #ffb6c8;
+}
+
+.stop-btn:hover:not(:disabled),
+.clear-btn:hover:not(:disabled) {
+  background: #ffdae4;
+  border-color: #ffdae4;
+}
+
+.record-btn:disabled,
+.stop-btn:disabled,
+.clear-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.recording-timer {
+  margin-top: 0.6rem;
+  font-size: 0.9rem;
+  color: #7a3251;
+  font-weight: 600;
+}
+
+/* ---------------- AUDIO PLAYERS ---------------- */
+
+.audio-players {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.8rem;
+  margin-top: 0.8rem;
+}
+
+.audio-block audio {
+  width: 100%;
+  max-width: 100%;
+}
+
+/* ---------------- STATUS BOX ---------------- */
+
+.status-box {
+  margin-top: 0.9rem;
+  padding: 0.6rem 0.7rem;
+  border-radius: 0.8rem;
+  border: 1px solid #ffc8d6;
+  background: #ffedf1;
+  font-size: 0.9rem;
+  color: #7a3251;
+}
+
+.status-label {
+  font-weight: 600;
+  margin-right: 0.25rem;
+}
+
+/* ---------------- CAMPOS E SELECT ---------------- */
+
+.field-label {
+  display: block;
+  margin-bottom: 0.25rem;
+  font-size: 0.9rem;
+  color: #7a3251;
+}
+
+select,
+input[type="number"],
+input[type="range"] {
+  width: 100%;
+  border-radius: 999px;
+  border: 1px solid #ffc8d6;
+  background: #ffffff;
+  color: #7a3251;
+  padding: 0.45rem 0.8rem;
+  font-size: 0.85rem;
+}
+
+select:focus,
+input[type="number"]:focus,
+input[type="range"]:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #ffb6c8;
+}
+
+/* ---------------- PARAMETROS ---------------- */
+
+.parameters-container {
+  margin-top: 0.6rem;
+  padding: 0.7rem 0.8rem;
+  border-radius: 1rem;
+  background: #ffedf1;
+  border: 1px dashed #ffc8d6;
+}
+
+.parameter-group {
+  margin-bottom: 0.5rem;
+}
+
+.parameter-group label {
+  font-size: 0.86rem;
+  display: block;
+  margin-bottom: 0.18rem;
+  color: #7a3251;
+}
+
+.parameter-inline {
+  display: flex;
+  gap: 0.4rem;
+  align-items: center;
+}
+
+/* ---------------- BOTOES ---------------- */
+
+.buttons-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-top: 0.8rem;
+}
+
+.primary-btn,
+.ghost-btn {
+  border-radius: 999px;
+  padding: 0.45rem 1.2rem;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: 1px solid transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+}
+
+.primary-btn {
+  background: #ffb6c8;           
+  color: #7a3251;
+  border-color: #ffb6c8;
+}
+
+.primary-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.ghost-btn {
+  background: #ffedf1;           
+  color: #7a3251;
+  border-color: #ffc8d6;
+}
+
+.helper-text {
+  margin-top: 0.6rem;
+  font-size: 0.85rem;
+  color: #8a4a63;
+}
+
+/* ---------------- INFO LIST ---------------- */
+
+.info-list {
+  margin: 0.4rem 0 0.9rem;
+  padding-left: 1.1rem;
+  font-size: 0.9rem;
+  color: #8a4a63;
+}
+
+.info-list li + li {
+  margin-top: 0.2rem;
+}
+
+/* ---------------- TAGS ---------------- */
+
+.tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-top: 0.4rem;
+}
+
+.tag {
+  padding: 0.25rem 0.6rem;
+  border-radius: 999px;
+  background: #ffdae4;           
+  border: 1px solid #ffc8d6;
+  font-size: 0.8rem;
+  color: #7a3251;
+}
+
+/* ---------------- RESPONSIVO ---------------- */
+
+@media (max-width: 900px) {
+  main {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ---------------- CARROSSEL HEADER (TOP-CONTENT) ---------------- */
+
+.top-content {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.top-content .carousel {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+  background: #ffedf1;           
+}
+
+.top-content .carousel-inner {
+  position: relative;
+  width: 100%;
+}
+
+.top-content .carousel-item {
+  position: relative;
+  display: none;
+}
+
+.top-content .carousel-item.active {
+  display: block;
+}
+
+.top-content .carousel-item img {
+  display: block;
+  width: 100%;
+  height: 260px;                 
+  object-fit: cover;
+}
+
+/* legendas */
+.top-content .carousel-caption {
+  position: absolute;
+  left: 50%;
+  bottom: 40px;
+  transform: translateX(-50%);
+  text-align: center;
+  max-width: 760px;
+}
+
+.top-content .carousel-caption h1,
+.top-content .carousel-caption h3 {
+  margin: 0 0 10px;
+  color: #ffffff;                
+}
+
+.top-content .carousel-caption .carousel-caption-description {
+  color: rgba(255, 255, 255, 0.85);
+}
+
+/* indicadores (bolinhas) */
+.top-content .carousel-indicators {
+  position: absolute;
+  left: 50%;
+  bottom: 15px;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  padding-left: 0;
+  margin: 0;
+  list-style: none;
+}
+
+.top-content .carousel-indicators li {
+  width: 14px;
+  height: 14px;
+  margin-left: 6px;
+  margin-right: 6px;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 255, 255, 0.9);
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.top-content .carousel-indicators li.active {
+  background: #ffffff;
+  transform: scale(1.1);
+}
+
+/* controles (setas) */
+.top-content .carousel-control-prev,
+.top-content .carousel-control-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: auto;
+  height: auto;
+  border-radius: 0;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  border-bottom: 0;
+  transition: 0.3s;
+  box-shadow: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.top-content .carousel-control-prev:hover,
+.top-content .carousel-control-next:hover {
+  background: transparent;
+  box-shadow: none;
+}
+
+.top-content .carousel-control-prev {
+  left: 20px;
+}
+
+.top-content .carousel-control-next {
+  right: 20px;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 2rem;
+  font-weight: 300;
+  line-height: 1;
+  transition: all 0.3s ease;
+}
+
+.top-content .carousel-control-prev:hover .carousel-control-prev-icon,
+.top-content .carousel-control-next:hover .carousel-control-next-icon {
+  color: rgba(255, 255, 255, 1);
+  transform: scale(1.15);
+}
+
+.carousel-control-prev-icon::before {
+  content: "‹";
+  font-size: 2rem;
+  line-height: 1;
+  color: #fff;
+}
+
+.carousel-control-next-icon::before {
+  content: "›";
+  font-size: 2rem;
+  line-height: 1;
+  color: #fff;
+}
+
+/* texto acessível escondido */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Barra de progresso do carrossel */
+.carousel-progress-bar {
+  position: absolute;
+  bottom: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 8px;
+}
+
+.carousel-progress-dot {
+  width: 8px;
+  height: 3px;
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: 2px;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.carousel-progress-dot.active {
+  background: rgba(255, 182, 200, 0.9);
+  width: 24px;
+}
+
+.d-block {
+  display: block;
+}
+
+.w-100 {
+  width: 100%;
+}
+
+/* responsivo */
+@media (max-width: 767px) {
+  .top-content .carousel-item img {
+    height: 200px;
+  }
+
+  .top-content .carousel-caption {
+    bottom: 20px;
+    padding: 0 1.5rem;
+  }
+
+  .top-content .carousel-caption-description {
+    display: none;
+  }
+
+  .top-content .carousel-caption h1,
+  .top-content .carousel-caption h2,
+  .top-content .carousel-caption h3 {
+    font-size: 18px;
+  }
+}
+
+@media (max-width: 575px) {
+  .top-content .carousel-item img {
+    height: 180px;
+  }
+}
